@@ -1,39 +1,38 @@
-$(function() { // Makes sure that your function is called once all the DOM elements of the page are ready to be used.
+// Wait for page to load before running code
+$(function() { 
     
-    // Called function to update the name, happiness, and weight of our pet in our HTML
+    // Show initial values
     checkAndUpdatePetInfoInHtml();
   
-    // When each button is clicked, it will "call" function for that button (functions are below)
+    // Connect buttons to functions
     $('.treat-button').click(clickedTreatButton);
     $('.play-button').click(clickedPlayButton);
     $('.exercise-button').click(clickedExerciseButton);
-    $('.sleep-button').click(clickedSleepButton);  // My new button
+    $('.sleep-button').click(clickedSleepButton);
   
-    // UNIQUE JQUERY METHOD #1: .hover()
-    // This method lets you add effects when mouse enters AND leaves an element
-    // First function runs when mouse enters, second function when mouse leaves
-    // Makes the buttons interactive and change color on hover
+    // JQUERY METHOD 1: .hover()
+    // Makes buttons change color when you move mouse over them
     $('button').hover(
       function() {
-        $(this).css('background-color', '#4a5568'); // darker when hovering
+        $(this).css('background-color', '#4a5568');
       },
       function() {
-        $(this).css('background-color', '#1e2835'); // back to original
+        $(this).css('background-color', '#1e2835');
       }
     );
     
   })
   
-    // Pet info object with starting values
+    // Object that holds all pet data
     var pet_info = {
       name: "Buddy", 
       weight: 15, 
       happiness: 50,
-      energy: 70  // New stat for my sleep button
+      energy: 70
     };
   
+    // Treat button - pet gets happy but gains weight
     function clickedTreatButton() {
-      // Giving treats makes pet happy but adds weight
       pet_info.happiness = pet_info.happiness + 10;
       pet_info.weight = pet_info.weight + 2;
       
@@ -41,8 +40,8 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       checkAndUpdatePetInfoInHtml();
     }
     
+    // Play button - pet gets happy and burns calories
     function clickedPlayButton() {
-      // Playing makes pet happy and burns calories
       pet_info.happiness = pet_info.happiness + 15;
       pet_info.weight = pet_info.weight - 1;
       pet_info.energy = pet_info.energy - 10;
@@ -51,8 +50,8 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       checkAndUpdatePetInfoInHtml();
     }
     
+    // Exercise button - pet loses weight but gets tired
     function clickedExerciseButton() {
-      // Exercise is tough work, pet loses weight but gets tired
       pet_info.happiness = pet_info.happiness - 5;
       pet_info.weight = pet_info.weight - 3;
       pet_info.energy = pet_info.energy - 15;
@@ -61,9 +60,8 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       checkAndUpdatePetInfoInHtml();
     }
     
-    // NEW BUTTON FUNCTION - Sleep button
+    // Sleep button - restores energy
     function clickedSleepButton() {
-      // Sleeping restores energy but pet gets a little bored
       pet_info.energy = pet_info.energy + 25;
       pet_info.happiness = pet_info.happiness - 3;
       
@@ -76,8 +74,8 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       updatePetInfoInHtml();
     }
     
+    // Make sure values don't go negative
     function checkWeightAndHappinessBeforeUpdating() {
-      // Make sure values don't go below zero
       if (pet_info.weight < 0) {
         pet_info.weight = 0;
       }
@@ -91,7 +89,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       }
     }
     
-    // Updates your HTML with the current values in your pet_info object
+    // Update the HTML with current values
     function updatePetInfoInHtml() {
       $('.name').text(pet_info['name']);
       $('.weight').text(pet_info['weight']);
@@ -99,18 +97,16 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       $('.energy').text(pet_info['energy']);
     }
     
-    // Visual notification function - shows pet messages
+    // Show message from pet
     function showPetMessage(message) {
-      // UNIQUE JQUERY METHOD #2: .slideDown()
-      // This method makes an element appear with a smooth sliding animation
-      // The number (400) is how fast it slides in milliseconds
-      // First we set the text, then slide it down to show it
+      // JQUERY METHOD 2: .slideDown()
+      // Makes the message box appear with a sliding animation
       
-      $('.pet-message').text(message);  // Set the message text
-      $('.pet-message').slideDown(400);  // Slide down to reveal the message
+      $('.pet-message').text(message);
+      $('.pet-message').slideDown(400);
       
-      // After 3 seconds, slide the message back up to hide it
+      // Hide message after 3 seconds
       setTimeout(function() {
-        $('.pet-message').slideUp(400);  // Slide up to hide
+        $('.pet-message').slideUp(400);
       }, 3000);
     }

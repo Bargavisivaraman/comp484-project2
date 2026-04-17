@@ -8,11 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Load jQuery first -->
+    <!-- Load jQuery library first -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
-    <!-- Then load your script -->
+    <!-- Then load our JavaScript -->
     <script src="script.js"></script>
     
     <link rel="stylesheet" href="style.css">
@@ -26,18 +26,19 @@
 
     <main>
       <section class="pet-image-container">
-         <!-- Replace pet image with your own pet image -->
         <img class="pet-image" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400" alt="Cute dog">
       </section>
       <section class="dashboard">
+        <!-- Pet stats display -->
         <div>Name: <strong><span class="name"></span></strong></div>
         <div>Weight: <strong><span class="weight"></span> pounds</strong></div>
         <div>Happiness: <strong><span class="happiness"></span> tail wags (per min)</strong></div>
         <div>Energy: <strong><span class="energy"></span>%</strong></div>
         
-        <!-- Pet message notification area -->
+        <!-- Message box for pet feedback -->
         <div class="pet-message"></div>
         
+        <!-- Action buttons -->
         <div class="button-container">
           <button class="treat-button">
             Treat
@@ -54,7 +55,5 @@
         </div>
       </section>
     </main>
-
-    <!-- Your web-app is https, so your scripts need to be too -->
   </body>
 </html>
